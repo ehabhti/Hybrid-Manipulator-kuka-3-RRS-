@@ -1,0 +1,50 @@
+P=56;l1=25;b=56;l2=61;
+x=5;y=5;
+z=atand((-sind(x)*sind(y))/(cosd(x)+cosd(y)));
+R=[cosd(y)*cosd(z) -cosd(y)*sind(z) sind(y);
+   cosd(z)*sind(x)*sind(y)+cosd(x)*sind(z) cosd(x)*cosd(z)-sind(x)*sind(y)*sind(z) -sind(x)*cosd(y);
+   sind(x)*sind(z)-cosd(x)*cosd(z)*sind(y) sind(x)*cosd(z)+cosd(x)*sind(y)*sind(z) cosd(x)*cosd(y)];
+Rz44=[cosd(0) -sind(0) 0;sind(0) cosd(0) 0;0 0 1];
+Rz45=[cosd(120) -sind(120) 0;sind(120) cosd(120) 0;0 0 1];
+Rz46=[cosd(240) -sind(240) 0;sind(240) cosd(240) 0;0 0 1];
+O7x=P*(R(1,1)-R(2,2))/2;
+O7y=-R(2,1)*P;
+O7z=70;
+O7=[O7x;O7y;O7z];
+O74=O7+R*Rz44*[P; 0; 0];
+O75=O7+R*Rz45*[P; 0; 0];
+O76=O7+R*Rz46*[P; 0; 0];
+A1=2*l1*cosd(0)*(b*cosd(0)-O74(1));
+A2=2*l1*cosd(120)*(b*cosd(120)-O75(1));
+A3=2*l1*cosd(240)*(b*cosd(240)-O76(1));
+B1=2*l1*O74(3)*cosd(0)^2;
+B2=2*l1*O75(3)*cosd(120)^2;
+B3=2*l1*O76(3)*cosd(240)^2;
+C1=(O74(1))^2-2*b*O74(1)*cosd(0)+cosd(0)^2*(b^2+l1^2-l2^2+(O74(3))^2);
+C2=(O75(1))^2-2*b*O75(1)*cosd(120)+cosd(120)^2*(b^2+l1^2-l2^2+(O75(3))^2);
+C3=(O76(1))^2-2*b*O76(1)*cosd(240)+cosd(240)^2*(b^2+l1^2-l2^2+(O76(3))^2);
+th11=2*atan2d(-B1+sqrt(A1^2+B1^2-C1^2),C1-A1)
+th12=2*atan2d(-B1-sqrt(A1^2+B1^2-C1^2),C1-A1)
+th21=2*atan2d(-B2+sqrt(A2^2+B2^2-C2^2),C2-A2)
+th22=2*atan2d(-B2-sqrt(A2^2+B2^2-C2^2),C2-A2)
+th31=2*atan2d(-B3+sqrt(A3^2+B3^2-C3^2),C3-A3)
+th32=2*atan2d(-B3-sqrt(A3^2+B3^2-C3^2),C3-A3)
+cfi11=(O74(1,1)-cosd(0)*(b+l1*cos(th11*pi/180)))/(l2*cosd(0));
+sfi11=-(O74(3,1)+l1*sin(th11*pi/180))/l2;
+fi11=atan2(sfi11,cfi11)*(180/pi)
+cfi12=(O74(1,1)-cosd(0)*(b+l1*cos(th12*pi/180)))/(l2*cosd(0));
+sfi12=-(O74(3,1)+l1*sin(th12*pi/180))/l2;
+fi12=atan2(sfi12,cfi12)*(180/pi)
+cfi21=(O75(1,1)-cosd(120)*(b+l1*cos(th21*pi/180)))/(l2*cosd(120));
+sfi21=-(O75(3,1)+l1*sin(th21*pi/180))/l2;
+fi21=atan2(sfi21,cfi21)*(180/pi)
+cfi22=(O75(1,1)-cosd(120)*(b+l1*cos(th22*pi/180)))/(l2*cosd(120));
+sfi22=-(O75(3,1)+l1*sin(th22*pi/180))/l2;
+fi22=atan2(sfi22,cfi22)*(180/pi)
+cfi31=(O76(1,1)-cosd(240)*(b+l1*cos(th31*pi/180)))/(l2*cosd(240));
+sfi31=-(O76(3,1)+l1*sin(th31*pi/180))/l2;
+fi31=atan2(sfi31,cfi31)*(180/pi)
+cfi32=(O76(1,1)-cosd(240)*(b+l1*cos(th32*pi/180)))/(l2*cosd(240));
+sfi32=-(O76(3,1)+l1*sin(th32*pi/180))/l2;
+fi32=atan2(sfi32,cfi32)*(180/pi)
+RINV=[cosd(y)*cosd(z) -cosd(y)*sind(z) sind(y) O7x;cosd(z)*sind(x)*sind(y)+cosd(x)*sind(z) cosd(x)*cosd(z)-sind(x)*sind(y)*sind(z) -sind(x)*cosd(y) O7y;sind(x)*sind(z)-cosd(x)*cosd(z)*sind(y) sind(x)*cosd(z)+cosd(x)*sind(y)*sind(z) cosd(x)*cosd(y) O7z;0 0 0 1];
